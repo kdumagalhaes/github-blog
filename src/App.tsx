@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'styled-components'
+import { ArticlesArea } from './components/ArticlesArea/ArticlesArea'
 import { Header } from './components/Header/Header'
 import { Profile } from './components/Profile/Profile'
 import { SearchBar } from './components/SearchBar/SearchBar'
@@ -11,6 +12,7 @@ export function App() {
       <Header />
       <Profile />
       <SearchBar />
+      <ArticlesArea />
       <GlobalStyle />
     </ThemeProvider>
   )
