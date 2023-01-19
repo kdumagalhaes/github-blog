@@ -1,17 +1,20 @@
+import { ArticleModel } from '../../mocks/articles'
 import { Container } from './styles'
 
-export function Article() {
+interface ArticleProps extends ArticleModel {}
+
+export function Article({ id, title, date, summary, url }: ArticleProps) {
+  const dayWord = date > 1 ? 'dias' : 'dia'
+
   return (
-    <Container href="#">
+    <Container key={id} href={url}>
       <div className="top">
-        <h3 className="title">JavaScript data types and data structures</h3>
-        <span className="date">Há 1 dia</span>
+        <h3 className="title">{title}</h3>
+        <span className="date">
+          Há {date} {dayWord}
+        </span>
       </div>
-      <p className="article-summary">
-        Programming languages all have built-in data structures, but these often
-        differ from one language to another. This article attempts to list the
-        built-in data structures available in...
-      </p>
+      <p className="article-summary">{summary}</p>
     </Container>
   )
 }
