@@ -1,25 +1,31 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent } from 'react'
+import { useSearch } from '../../context/SearchContext'
 import { Container } from './styles'
 
 export function SearchBar() {
-  const [term, setTerm] = useState('')
+  const { getSearchTerm, articleList } = useSearch()
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    setTerm(event.target.value)
+    getSearchTerm(event.target.value)
   }
+
+  const articlesQuantity = articleList.length
+  const publicacoesWord = articlesQuantity > 1 ? 'publicações' : 'publicação'
 
   return (
     <Container>
       <div className="top">
         <h3>Publicações</h3>
-        <span>6 publicações</span>
+        <span>
+          {articlesQuantity} {publicacoesWord}
+        </span>
       </div>
       <input
         className="search-input"
         type="text"
         placeholder="Buscar conteúdo"
-        value={term}
         onChange={handleSearch}
+        autoFocus
       />
     </Container>
   )
