@@ -3,16 +3,19 @@ import { ArticlesArea } from './components/ArticlesArea/ArticlesArea'
 import { Header } from './components/Header/Header'
 import { Profile } from './components/Profile/Profile'
 import { SearchBar } from './components/SearchBar/SearchBar'
+import { SearchProvider } from './context/SearchContext'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Header />
-      <Profile />
-      <SearchBar />
-      <ArticlesArea />
+      <SearchProvider>
+        <Header />
+        <Profile />
+        <SearchBar />
+        <ArticlesArea />
+      </SearchProvider>
       <GlobalStyle />
     </ThemeProvider>
   )
