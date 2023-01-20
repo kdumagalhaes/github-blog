@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { Fragment, useEffect, useState, useCallback } from 'react'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 interface ProfileProps {
   username: string
@@ -80,7 +81,7 @@ export function Profile({ username }: ProfileProps) {
                 <li>
                   <FontAwesomeIcon
                     className="data-list-icon"
-                    icon={faGithub}
+                    icon={faGithub as IconProp}
                     color="#3A536B"
                   />{' '}
                   {data.login}
