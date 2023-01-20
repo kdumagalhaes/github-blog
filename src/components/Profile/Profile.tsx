@@ -6,7 +6,7 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState, useCallback } from 'react'
 
 interface ProfileProps {
   username: string
@@ -37,16 +37,16 @@ export function Profile({ username }: ProfileProps) {
     },
   ])
 
-  const fetchUser = (username: string) => {
+  const fetchUser = useCallback((username: string) => {
     fetch(`https://api.github.com/users/${username}`)
       .then((res) => res.json())
       .then((data) => setUser([data]))
       .catch((error) => console.warn(error))
-  }
+  }, [])
 
   useEffect(() => {
-    fetchUser('kdumagalhaes')
-  }, [])
+    fetchUser(username)
+  }, [fetchUser, username])
 
   return (
     <Container role="profile">

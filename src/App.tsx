@@ -12,7 +12,7 @@ export function App() {
     <ThemeProvider theme={defaultTheme}>
       <SearchProvider>
         <Header />
-        <Profile />
+        <Profile username="kdumagalhaes" />
         <SearchBar />
         <ArticlesArea />
       </SearchProvider>
