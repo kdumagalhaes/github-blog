@@ -3,7 +3,7 @@ import { Container } from './styles'
 
 interface ArticleProps extends ArticleModel {}
 
-export function Article({ id, title, date, summary, url }: ArticleProps) {
+export function ArticleCard({ id, title, date, summary, url }: ArticleProps) {
   const dayWord = date > 1 ? 'dias' : 'dia'
 
   return (
