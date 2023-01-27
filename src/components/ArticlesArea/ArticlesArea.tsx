@@ -1,4 +1,4 @@
-import { Article } from '../Article/Article'
+import { ArticleCard } from '../ArticleCard/ArticleCard'
 import { Container } from './styles'
 import { useSearch } from '../../context/SearchContext'
 
@@ -8,7 +8,7 @@ export function ArticlesArea() {
     <Container>
       {articleList.map(({ id, title, date, summary, url }) => {
         return (
-          <Article
+          <ArticleCard
             key={id}
             id={id}
             title={title}
