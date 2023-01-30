@@ -74,5 +74,20 @@ export const Container = styled.div`
     max-width: 54rem;
     padding: 2.5rem 2rem;
     margin: 0 auto 8rem auto;
+    line-height: 1.6rem;
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    a {
+      color: ${({ theme }) => theme.blue};
+      transition: color 0.3s;
+
+      &:hover,
+      &:visited {
+        color: ${({ theme }) => theme['base-label']};
+      }
+    }
   }
 `

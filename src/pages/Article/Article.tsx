@@ -12,6 +12,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { Fragment, useEffect, useState } from 'react'
 import { fetchArticleData } from '../../utils/fetchArticleData/fetchArticleData'
 import { normalizePathname } from '../../utils/normalizePathname/normalizePathname'
+import ReactMarkdown from 'react-markdown'
 interface ApiResponseModel {
   id: number
   url: string
@@ -92,7 +93,9 @@ export function Article() {
                 </li>
               </ul>
             </div>
-            <article className="article-content">{data.body}</article>
+            <article className="article-content">
+              <ReactMarkdown>{data.body}</ReactMarkdown>
+            </article>
           </Fragment>
         )
       })}
