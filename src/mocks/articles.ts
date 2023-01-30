@@ -9,7 +9,7 @@ export interface ArticleModel {
 export const articles: ArticleModel[] = [
   {
     id: '1',
-    title: 'JavaScript data types and data structures',
+    title: 'Boas práticas para devs em início de carreira',
     date: 6,
     summary:
       'Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...',

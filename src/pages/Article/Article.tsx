@@ -8,10 +8,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Fragment, useEffect, useState } from 'react'
 import { fetchArticleData } from '../../utils/fetchArticleData/fetchArticleData'
-
+import { normalizePathname } from '../../utils/normalizePathname/normalizePathname'
 interface ApiResponseModel {
   id: number
   url: string
@@ -24,13 +24,17 @@ interface ApiResponseModel {
 }
 
 export function Article() {
+  const { pathname } = useLocation()
   const [articleData, setArticleData] = useState<ApiResponseModel[]>()
 
+  const normalizedPathname = normalizePathname(pathname)
+  console.log(normalizedPathname)
+
   useEffect(() => {
-    fetchArticleData('Boas práticas para devs em início de carreira').then(
-      (data) => setArticleData(data?.items),
+    fetchArticleData(normalizedPathname).then((data) =>
+      setArticleData(data?.items),
     )
-  }, [])
+  }, [pathname, normalizedPathname])
 
   return (
     <Container>
