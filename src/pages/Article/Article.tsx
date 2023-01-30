@@ -28,7 +28,6 @@ export function Article() {
   const [articleData, setArticleData] = useState<ApiResponseModel[]>()
 
   const normalizedPathname = normalizePathname(pathname)
-  console.log(normalizedPathname)
 
   useEffect(() => {
     fetchArticleData(normalizedPathname).then((data) =>
