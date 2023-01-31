@@ -1,7 +1,11 @@
 export const normalizePathname = (pathname: string) => {
   const lowerCasePathname = pathname.toLowerCase()
   const pathnameWithoutSlashes = lowerCasePathname.slice(9)
-  const normelizedPathname = pathnameWithoutSlashes.normalize()
+  // const pathnameWithoutSpecialCharacters = pathnameWithoutSlashes.replace(
+  //   /[&\/\\#,+()$~%.'":*?<>{}]/g,
+  //   '',
+  // )
+  const normalizedPathname = pathnameWithoutSlashes.normalize()
 
-  return normelizedPathname
+  return normalizedPathname
 }

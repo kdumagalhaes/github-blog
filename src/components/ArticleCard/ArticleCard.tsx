@@ -4,12 +4,22 @@ import { Container } from './styles'
 
 interface ArticleProps extends ArticleModel {}
 
-export function ArticleCard({ id, title, date, summary }: ArticleProps) {
+export function ArticleCard({
+  id,
+  title,
+  date,
+  summary,
+  number,
+}: ArticleProps) {
   const dayWord = date > 1 ? 'dias' : 'dia'
 
   return (
     <Container>
-      <NavLink className="link" key={id} to={{ pathname: `/article/${title}` }}>
+      <NavLink
+        className="link"
+        key={id}
+        to={{ pathname: `/article/${number}` }}
+      >
         <div className="top">
           <h3 className="title">{title}</h3>
           <span className="date">
