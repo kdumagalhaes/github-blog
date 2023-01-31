@@ -37,6 +37,7 @@ export const articles: ArticleModel[] = [
   },
   {
     id: '4',
+    number: 10,
     title: 'JavaScript data types and data structures',
     date: 6,
     summary:
@@ -45,6 +46,7 @@ export const articles: ArticleModel[] = [
   },
   {
     id: '5',
+    number: 56,
     title: 'JavaScript data types and data structures',
     date: 6,
     summary:
@@ -53,6 +55,7 @@ export const articles: ArticleModel[] = [
   },
   {
     id: '6',
+    number: 45,
     title: 'JavaScript data types and data structures',
     date: 6,
     summary:
