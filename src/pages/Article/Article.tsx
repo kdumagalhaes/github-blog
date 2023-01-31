@@ -11,11 +11,11 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Link, useLocation } from 'react-router-dom'
 import { Fragment, useEffect, useState } from 'react'
 import { fetchArticleData } from '../../utils/fetchArticleData/fetchArticleData'
-import { normalizePathname } from '../../utils/normalizePathname/normalizePathname'
 import ReactMarkdown from 'react-markdown'
-interface ApiResponseModel {
+import { getArticleIdByPathname } from '../../utils/getArticleIdByPathname/getArticleIdByPathname'
+interface ArticleDataModel {
   id: number
-  url: string
+  html_url: string
   comments_url: string
   title: string
   created_at: string
@@ -26,15 +26,13 @@ interface ApiResponseModel {
 
 export function Article() {
   const { pathname } = useLocation()
-  const [articleData, setArticleData] = useState<ApiResponseModel[]>()
+  const [articleData, setArticleData] = useState<ArticleDataModel[]>()
 
-  const normalizedPathname = normalizePathname(pathname)
+  const articleId = getArticleIdByPathname(pathname)
 
   useEffect(() => {
-    fetchArticleData(normalizedPathname).then((data) =>
-      setArticleData(data?.items),
-    )
-  }, [pathname, normalizedPathname])
+    fetchArticleData(articleId).then((data) => setArticleData([data]))
+  }, [articleId])
 
   return (
     <Container>
@@ -52,7 +50,7 @@ export function Article() {
                   <span className="link-text">Voltar</span>
                 </Link>
                 <a
-                  href={data.url}
+                  href={data.html_url}
                   className="github-link link"
                   target="_blank"
                   rel="noreferrer"

@@ -78,6 +78,20 @@ export const Container = styled.div`
 
     p {
       margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    h2,
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    pre {
+      background-color: ${({ theme }) => theme['base-border']};
+      border-radius: 5px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      white-space: pre-wrap;
     }
 
     a {

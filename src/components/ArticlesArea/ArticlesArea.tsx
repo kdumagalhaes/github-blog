@@ -6,11 +6,12 @@ export function ArticlesArea() {
   const { articleList } = useSearch()
   return (
     <Container>
-      {articleList.map(({ id, title, date, summary, url }) => {
+      {articleList.map(({ id, title, date, summary, url, number }) => {
         return (
           <ArticleCard
             key={id}
             id={id}
+            number={number}
             title={title}
             date={date}
             summary={summary}
