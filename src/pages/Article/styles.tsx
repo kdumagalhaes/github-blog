@@ -104,4 +104,11 @@ export const Container = styled.div`
       }
     }
   }
+
+  .loader {
+    display: flex;
+    justify-content: center;
+    margin: 3rem auto;
+    max-width: 54rem;
+  }
 `

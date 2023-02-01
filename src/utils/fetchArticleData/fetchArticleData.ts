@@ -1,10 +1,9 @@
-export const fetchArticleData = (param: string | number) => {
-  if (typeof param === 'string') {
+export const fetchArticleData = (articleId: string) => {
+  try {
     return fetch(
-      `https://api.github.com/search/issues?q=${param}%20repo:kdumagalhaes/github-blog`,
+      `https://api.github.com/repos/kdumagalhaes/github-blog/issues/${articleId}`,
     ).then((res) => res.json())
+  } catch (error) {
+    console.warn(error)
   }
-  return fetch(
-    `https://api.github.com/repos/kdumagalhaes/github-blog/issues/${param}`,
-  ).then((res) => res.json())
 }
