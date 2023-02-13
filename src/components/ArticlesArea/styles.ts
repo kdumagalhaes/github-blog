@@ -7,7 +7,11 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   position: relative;
-  z-index: 0;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+  }
 
   .loader {
     position: absolute;

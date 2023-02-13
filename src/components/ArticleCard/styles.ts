@@ -32,6 +32,10 @@ export const Container = styled.div`
       .date {
         font-size: 0.875rem;
         color: ${({ theme }) => theme['base-span']};
+
+        @media only screen and (max-width: 600px) {
+          display: none;
+        }
       }
     }
 
