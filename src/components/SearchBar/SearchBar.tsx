@@ -1,15 +1,21 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useRef } from 'react'
 import { useSearch } from '../../context/SearchContext'
 import { Container } from './styles'
+import { debounce } from 'lodash'
 
 export function SearchBar() {
-  const { getSearchTerm, articleList } = useSearch()
+  const { getSearchTerm, articlesList } = useSearch()
+
+  const debouncedSearch = useRef(
+    debounce((term: string) => getSearchTerm(term), 300),
+  ).current
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    getSearchTerm(event.target.value)
+    const { value: nextValue } = event.target
+    debouncedSearch(nextValue)
   }
 
-  const articlesQuantity = articleList.length
+  const articlesQuantity = articlesList === undefined ? 0 : articlesList.length
   const publicacoesWord = articlesQuantity > 1 ? 'publicações' : 'publicação'
 
   return (

@@ -1,30 +1,24 @@
 import { NavLink } from 'react-router-dom'
-import { ArticleModel } from '../../mocks/articles'
 import { Container } from './styles'
 
-interface ArticleProps extends ArticleModel {}
+interface ArticleProps {
+  number: number
+  title: string
+  summary: string
+  date: string
+}
 
-export function ArticleCard({
-  id,
-  title,
-  date,
-  summary,
-  number,
-}: ArticleProps) {
-  const dayWord = date > 1 ? 'dias' : 'dia'
-
+export function ArticleCard({ title, date, summary, number }: ArticleProps) {
   return (
     <Container>
       <NavLink
         className="link"
-        key={id}
+        key={number}
         to={{ pathname: `/article/${number}` }}
       >
         <div className="top">
           <h3 className="title">{title}</h3>
-          <span className="date">
-            Há {date} {dayWord}
-          </span>
+          <span className="date">Há {date}</span>
         </div>
         <p className="article-summary">{summary}</p>
       </NavLink>
