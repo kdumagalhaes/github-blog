@@ -9,6 +9,11 @@ export const Container = styled.div`
   padding: 2rem 2.5rem;
   display: flex;
 
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    height: 100%;
+  }
+
   .profile-img {
     width: 100%;
     max-width: 9.25rem;
@@ -16,16 +21,28 @@ export const Container = styled.div`
     background-color: lightgray;
     border-radius: 8px;
     margin-right: 2rem;
+
+    @media only screen and (max-width: 600px) {
+      margin: 0 auto 1rem auto;
+    }
   }
 
   .profile-title {
     font-size: 1.5rem;
+
+    @media only screen and (max-width: 600px) {
+      margin: 0 auto;
+    }
   }
 
   .profile-description {
     font-weight: 400;
     color: ${({ theme }) => theme['base-text']};
     line-height: 160%;
+
+    @media only screen and (max-width: 600px) {
+      display: none;
+    }
   }
 
   .github-link {
@@ -45,6 +62,10 @@ export const Container = styled.div`
 
     &:hover {
       border-bottom: 2px solid ${({ theme }) => theme.blue};
+    }
+
+    @media only screen and (max-width: 600px) {
+      display: none;
     }
   }
 
@@ -78,6 +99,10 @@ export const Container = styled.div`
     .data-list-icon {
       height: 1.125rem;
       width: 1.125rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+      display: none;
     }
   }
 

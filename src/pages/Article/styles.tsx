@@ -13,6 +13,10 @@ export const Container = styled.div`
     .top,
     .data-list {
       display: flex;
+
+      @media only screen and (max-width: 600px) {
+        display: none;
+      }
     }
     .top {
       justify-content: space-between;
@@ -92,6 +96,10 @@ export const Container = styled.div`
       padding: 1rem;
       margin-bottom: 1rem;
       white-space: pre-wrap;
+
+      @media only screen and (max-width: 600px) {
+        word-wrap: break-word;
+      }
     }
 
     a {

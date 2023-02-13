@@ -4,6 +4,10 @@ export const Container = styled.div`
   max-width: 54rem;
   margin: 0 auto;
 
+  @media only screen and (max-width: 600px) {
+    padding: 0 2rem;
+  }
+
   .top {
     display: flex;
     justify-content: space-between;
