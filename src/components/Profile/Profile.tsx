@@ -32,7 +32,7 @@ export function Profile({ username }: ProfileProps) {
   const userData: UserData[] = [data]
 
   return (
-    <Container role="profile">
+    <Container>
       {!isLoading ? (
         userData.map((data) => {
           return (
