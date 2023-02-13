@@ -9,7 +9,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { Fragment } from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import useSWR from 'swr'
-import { fetchUserData } from '../../utils/fetchUserData/fetchUserData'
+import { fetchUserData } from '../../utils'
 import { ThreeDots } from 'react-loader-spinner'
 interface ProfileProps {
   username: string

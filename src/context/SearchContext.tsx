@@ -1,7 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
-import { fetchArticlesList } from '../utils/fetchArticlesList/fetchArticlesList'
 import useSWR from 'swr'
-import { useDebounce } from '../utils/useDebounce/useDebounce'
+import { useDebounce, fetchArticlesList } from '../utils'
 
 interface SearchProviderProps {
   children: ReactNode
@@ -29,12 +28,12 @@ export const SearchProvider = ({ children }: SearchProviderProps) => {
 
   const url = `https://api.github.com/search/issues?q=${debouncedTerm}%20repo:kdumagalhaes/github-blog`
 
-  const { data, isLoading, isValidating } = useSWR(url, fetchArticlesList)
-
-  const apiResponse: ArticleModel[] = !isValidating ? data : undefined
+  const { data, isLoading } = useSWR(url, fetchArticlesList)
 
   const articlesList =
-    data !== undefined ? apiResponse.filter((a) => a.state === 'open') : []
+    data !== undefined
+      ? data.filter((a: ArticleModel) => a.state === 'open')
+      : []
 
   const getSearchTerm = (term: string) => {
     if (term !== '' || term !== undefined) {

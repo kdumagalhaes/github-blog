@@ -9,7 +9,7 @@ import {
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Link, useLocation } from 'react-router-dom'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment } from 'react'
 import { fetchArticleData } from '../../utils/fetchArticleData/fetchArticleData'
 import ReactMarkdown from 'react-markdown'
 import { getArticleIdByPathname } from '../../utils/getArticleIdByPathname/getArticleIdByPathname'
@@ -30,7 +30,7 @@ export function Article() {
   const { pathname } = useLocation()
 
   const articleId = getArticleIdByPathname(pathname)
-  const { data, error, isLoading } = useSWR(articleId, fetchArticleData)
+  const { data, isLoading } = useSWR(articleId, fetchArticleData)
 
   const apiData: ArticleDataModel[] = [data]
 
