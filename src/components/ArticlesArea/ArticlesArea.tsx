@@ -14,7 +14,7 @@ export function ArticlesArea() {
             <ArticleCard
               date={article.created_at}
               number={article.number}
-              summary="teste"
+              summary={`${article.body.substring(0, 200)}...`}
               title={article.title}
               key={article.id}
             />

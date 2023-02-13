@@ -12,6 +12,7 @@ interface ArticleModel {
   title: string
   state: string
   created_at: string
+  body: string
 }
 
 interface SearchContextModel {
