@@ -3,13 +3,13 @@ import { useSearch } from '../../context/SearchContext'
 import { Container } from './styles'
 
 export function SearchBar() {
-  const { getSearchTerm, articleList } = useSearch()
+  const { getSearchTerm, articlesList } = useSearch()
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     getSearchTerm(event.target.value)
   }
 
-  const articlesQuantity = articleList.length
+  const articlesQuantity = articlesList === undefined ? 0 : articlesList.length
   const publicacoesWord = articlesQuantity > 1 ? 'publicações' : 'publicação'
 
   return (

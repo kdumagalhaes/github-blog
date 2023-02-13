@@ -6,4 +6,11 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+
+  .loader {
+    display: flex;
+    justify-content: center;
+    margin: 3rem auto;
+    max-width: 54rem;
+  }
 `

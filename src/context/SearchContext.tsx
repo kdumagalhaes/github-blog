@@ -1,35 +1,51 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
-import { articles, ArticleModel } from '../mocks/articles'
+import useSWR from 'swr'
+import { useDebounce, fetchArticlesList } from '../utils'
 
 interface SearchProviderProps {
   children: ReactNode
 }
 
+interface ArticleModel {
+  id: number
+  number: number
+  title: string
+  state: string
+  created_at: string
+}
+
 interface SearchContextModel {
   getSearchTerm: (term: string) => void
-  articleList: ArticleModel[]
+  articlesList: ArticleModel[]
+  isLoading: boolean
 }
 
 export const SearchContext = createContext({} as SearchContextModel)
 
 export const SearchProvider = ({ children }: SearchProviderProps) => {
-  const [articleList, setArticleList] = useState<ArticleModel[]>(articles)
+  const [term, setTerm] = useState('')
+  const debouncedTerm = useDebounce(term, 600)
+
+  const url = `https://api.github.com/search/issues?q=${debouncedTerm}%20repo:kdumagalhaes/github-blog`
+
+  const { data, isLoading } = useSWR(url, fetchArticlesList)
+
+  const articlesList =
+    data !== undefined
+      ? data.filter((a: ArticleModel) => a.state === 'open')
+      : []
 
   const getSearchTerm = (term: string) => {
-    if (term === '' || term === undefined) {
-      setArticleList(articles)
-    } else {
-      const filteredArticlesList = articles.filter((article) => {
-        const articleTitle = article.title.toLowerCase()
-        return articleTitle.includes(term.toLocaleLowerCase())
-      })
-      setArticleList(filteredArticlesList)
+    if (term !== '' || term !== undefined) {
+      const normalizedTerm = term.toLowerCase().normalize()
+      setTerm(normalizedTerm)
     }
   }
 
   const value = {
-    articleList,
+    articlesList,
     getSearchTerm,
+    isLoading,
   }
 
   return (
