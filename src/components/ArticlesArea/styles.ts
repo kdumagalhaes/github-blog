@@ -6,11 +6,13 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  position: relative;
+  z-index: 0;
 
   .loader {
-    display: flex;
-    justify-content: center;
-    margin: 3rem auto;
-    max-width: 54rem;
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translate(-50%, -10%);
   }
 `
